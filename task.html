@@ -1,0 +1,38 @@
+1. 1 user harus mempunyai 1 profile, dan tampilkan profil masing2 user di detail user
+2. Buat crud untuk category
+3. Setiap product berada di bawah 1 kategori, contoh kategori 'electronic', 'furniture'
+4. Di index category, saat user klik di salah satu nama kategori, redirect halaman products yang kategorinya = kategori yang di-click
+5. setiap product bisa punya banyak tags, tapi tag yang sama bisa dipake di product berbeda.
+6. setiap user punya banyak comment, dan setiap product punya banyak comment juga. Tolong buat model dan relasi nya, tapi model Comment nya harus ada satu 
+
+products, id
+
+
+
+tags, id
+
+product_id tag_id
+1           2
+1           3
+2           2
+2           4
+
+HABTM
+table relasi nya tidak punya model
+product + tag
+kita hanya perlu buat table migrasi dengan products_tags
+apakah perlu model ProductTag? ga perlu..
+
+Has many through
+table relasi nya punya model
+di table relasi ada column lain selain id-id yang dihubungkan, 
+
+mahasiswa
+matakuliah
+dosen
+
+kontrak
+mahasiswa_id mata_kuliah_id dosen_id tgl_kontrak
+1               1             2
+2               1             2
+1               2             3

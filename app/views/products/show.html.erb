@@ -1,0 +1,16 @@
+<h1>detail product</h1>
+
+<p>
+  <b>Name: </b>
+  <%= @product.name %>
+</p>
+<p>
+  <b>Price: </b>
+  <%= @product.price %>
+</p>
+<p>
+  <b>Description: </b>
+  <%= @product.description %>
+</p>
+
+<%= link_to "Back", user_path(@user.id) %>

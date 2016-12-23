@@ -1,0 +1,29 @@
+<h1>Form Profile from user bla</h1>
+
+<%= form_for ([@profile, @user.profile.build]) do |f| %>
+  <div>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+  <div>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+  <div>
+    <%= f.label :religion %>
+    <%= f.text_field :religion %>
+  </div>
+  <div>
+    <%= f.label :gender %>
+    <%= f.text_field :gender %>
+  </div>
+  <div>
+    <%= f.label :date_of_birth %>
+    <%= f.text_field :description %>
+  </div>
+  <div>
+    <%= f.submit :submit %>
+  </div>
+<% end %>
+
+<%= link_to "Back", user_path(@user) %>
