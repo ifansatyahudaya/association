@@ -1,13 +1,31 @@
 <h1>User details</h1>
 
-<p>
-  <b>Name: </b>
-  <%= @user.name %>
-</p>
-<p>
-  <b>Email: </b>
-  <%= @user.email %>
-</p>
+<% if @user.profile.present? %>
+  <p>
+    <b>Name: </b>
+    <%= @user.profile.try(:full_name) %>
+  </p>
+  <p>
+    <b>Email: </b>
+    <%= @user.email %>
+  </p>
+  <p>
+    <b>Religion: </b>
+    <%= @user.profile.try(:religion) %>
+  </p>
+  <p>
+    <b>Gender: </b>
+    <%= @user.profile.try(:gender) %>
+  </p>
+  <p>
+    <b>Date of birth: </b>
+    <%= @user.profile.try(:date_of_birth) %>
+  </p>
+
+  <%= link_to "Edit Profile", edit_user_profile_path(@user) %>
+<% else %>
+  <%= link_to "Create Profile", new_user_profile_path(@user) %>
+<% end %>
 
 <% if flash[:notice].present? %>
   <div style="background: green; padding: 10px;">

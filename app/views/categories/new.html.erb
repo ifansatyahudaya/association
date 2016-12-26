@@ -1,0 +1,16 @@
+<h1>Insert Category</h1>
+<%= form_for @category do |f| %>
+  <% if @category.errors.any? %>
+    <% @category.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+  <% end %>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

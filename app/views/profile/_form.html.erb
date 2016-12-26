@@ -1,0 +1,25 @@
+<%= form_for [@user, @profile], url: user_profile_path(@user) do |f| %>
+  <div>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+  <div>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+  <div>
+    <%= f.label :religion %>
+    <%= f.text_field :religion %>
+  </div>
+  <div>
+    <%= f.label :gender %>
+    <%= f.text_field :gender %>
+  </div>
+  <div>
+    <%= f.label :date_of_birth %>
+    <%= f.date_select :date_of_birth %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -32,7 +32,6 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-
     redirect_to user_url(@product.user.id), alert: 'User successfully destroyed'
   end
 

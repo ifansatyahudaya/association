@@ -8,10 +8,25 @@ Rails.application.routes.draw do
   # patch 'users/:id', to: 'users#update'
   # delete 'users/:id', to: 'users#destroy'
 
+  # costume routes
+  # resources :users do
+  #   member do
+  #     delete 'delete_all', to: 'users#delete_all'
+  #   end
+
+  #   collection do
+  #     post 'like', to: 'users#like'
+  #   end
+
+  #   resources :products
+  # end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users do
     resources :products
+    resource :profile, controller: 'profile'
   end
-  resources :profile
+
+  resources :categories
   root to: "welcome#index"
 end
