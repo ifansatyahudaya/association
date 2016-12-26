@@ -1,21 +1,5 @@
-<h1>Add product's user bla</h1>
+<h1>Add product's <%= @user.name %></h1>
 
-<%= form_for ([@user, @user.products.build]) do |f| %>
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div>
-    <%= f.label :price %>
-    <%= f.text_field :price %>
-  </div>
-  <div>
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </div>
-  <div>
-    <%= f.submit :submit %>
-  </div>
-<% end %>
+<%= render "form" %>
 
 <%= link_to "Back", user_path(@user) %>

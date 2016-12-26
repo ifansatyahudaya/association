@@ -9,6 +9,20 @@
   <%= @user.email %>
 </p>
 
+<% if flash[:notice].present? %>
+  <div style="background: green; padding: 10px;">
+    <b>Notification</b>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<% if flash[:alert].present? %>
+  <div style="background: red; padding: 10px;">
+    <b>Notification</b>
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
 <h1>Products User</h1>
 <table border="1">
   <tr>
