@@ -1,4 +1,10 @@
 <%= form_for [@user, @profile], url: user_profile_path(@user) do |f| %>
+  <% if @user.profile.errors.any? %>
+    <% @user.profile.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+  <% end %>
+
   <div>
     <%= f.label :first_name %>
     <%= f.text_field :first_name %>
@@ -9,11 +15,12 @@
   </div>
   <div>
     <%= f.label :religion %>
-    <%= f.text_field :religion %>
+    <%= f.select :religion, ['Islam', 'Christian', 'Hindu', 'Buddha', 'Atheist', 'Other'], prompt: 'Choose Religion' %>
   </div>
   <div>
     <%= f.label :gender %>
-    <%= f.text_field :gender %>
+    <%= f.radio_button :gender, 'M' %> Male
+    <%= f.radio_button :gender, 'F' %> Female
   </div>
   <div>
     <%= f.label :date_of_birth %>

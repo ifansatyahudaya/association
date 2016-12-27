@@ -1,0 +1,29 @@
+<h1>Panel Category</h1>
+<% if flash[:notice].present? %>
+  <div style="background: green; padding: 10px;">
+    <b>Notification</b>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<% if flash[:alert].present? %>
+  <div style="background: red; padding: 10px;">
+    <b>Notification</b>
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+<table>
+  <tr>
+    <th>Category Name</th>
+    <th colspan="3">Action</th>
+  </tr>
+  <% @categories.each do |category| %>
+    <tr>
+      <td><%= link_to category.name, category_products_path(category) %></td>
+      <td><%= link_to "edit", edit_category_path(category) %></td>
+      <td><%= link_to "destroy", category_path(category), method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to "add category", new_category_path %>
+<%= link_to "back", root_path %>

@@ -23,10 +23,13 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users do
-    resources :products
+    resources :products, except: :index
     resource :profile, controller: 'profile'
   end
 
-  resources :categories
+  resources :categories do
+    resources :products, only: :index
+  end
+  resources :products, only: :index
   root to: "welcome#index"
 end

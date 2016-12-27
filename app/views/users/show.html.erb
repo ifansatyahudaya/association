@@ -15,7 +15,7 @@
   </p>
   <p>
     <b>Gender: </b>
-    <%= @user.profile.try(:gender) %>
+    <%= @user.profile.try(:gender).eql?('M') ? 'Male' : 'Female' %>
   </p>
   <p>
     <b>Date of birth: </b>

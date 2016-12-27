@@ -1,6 +1,16 @@
 class ProductsController < ApplicationController
   before_action :set_user, only: [:new, :create, :edit, :update]
   before_action :set_product, only: [:show, :update, :destroy]
+  before_action :set_categories_collection, only: [:new, :edit, :create, :update]
+
+  def index
+    if params[:category_id].present?
+      @category = Category.find(params[:category_id])
+      @products = @category.products
+    else
+      @products = Product.all
+    end
+  end
 
   def new 
     @product = @user.products.new
@@ -37,7 +47,7 @@ class ProductsController < ApplicationController
 
   private
     def product_params
-      params.require(:product).permit(:name, :price, :description)
+      params.require(:product).permit(:name, :price, :description, :category_id)
     end
 
     def set_product
@@ -46,5 +56,9 @@ class ProductsController < ApplicationController
 
     def set_user
       @user = User.find(params[:user_id])
+    end
+
+    def set_categories_collection
+      @categories_collection = Category.pluck(:name, :id)
     end
 end

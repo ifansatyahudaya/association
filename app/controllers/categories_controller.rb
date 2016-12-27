@@ -1,6 +1,10 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
+  def index
+    @categories = Category.all
+  end
+  
   def new
     @category = Category.new
   end
@@ -8,7 +12,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to root_url, notice: 'Category successfully created'
+      redirect_to categories_url, notice: 'Category successfully created'
     else
       render :new
     end 
@@ -20,7 +24,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to root_url, notice: 'Category successfully updated'
+      redirect_to categories_url, notice: 'Category successfully updated'
     else
       render :edit
     end
@@ -28,15 +32,15 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    redirect_to root_url, alert: 'Category successfully destroyed'
+    redirect_to categories_url, alert: 'Category successfully destroyed'
   end
 
   private
     def category_params
-      params.require(:category).permit(:name, :email)
+      params.require(:category).permit(:name)
     end
 
-    def set_user
+    def set_category
       @category = Category.find(params[:id])
     end
 end
