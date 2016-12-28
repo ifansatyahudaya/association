@@ -25,11 +25,19 @@ Rails.application.routes.draw do
   resources :users do
     resources :products, except: :index
     resource :profile, controller: 'profile'
+    resources :comments, shallow: true
   end
 
   resources :categories do
     resources :products, only: :index
   end
-  resources :products, only: :index
+
+  resources :tags, only: :index do
+    resources :products, only: :index
+  end
+
+  resources :products, only: :index do
+    resources :comments, shallow: true
+  end
   root to: "welcome#index"
 end

@@ -9,8 +9,18 @@
   <%= @product.price %>
 </p>
 <p>
+  <b>Category: </b>
+  <%= link_to @product.category.name, category_products_path(@product.category.id) %>
+</p>
+<p>
   <b>Description: </b>
   <%= @product.description %>
+</p>
+<p>
+  <b>Tags: </b>
+  <% @product.tags.each do |tag| %>
+    <%= link_to tag.name, tag_products_path(tag) %><br>
+  <% end %>
 </p>
 
 <%= link_to "Back", user_path(@product.user.id) %>

@@ -1,4 +1,4 @@
-<h1>List Products</h1>
+<h1><%= params[:tag_id].present? ? "Products with tag #{@tag.name}" : "List products by #{@category.name}" %></h1>
 
 <table border="1">
   <tr>
@@ -14,4 +14,4 @@
     </tr>
   <% end %>
 </table>
-<%= link_to "back", categories_path %>
+<%= link_to "back", params[:tag_id].present? ? root_path : categories_path %>

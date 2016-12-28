@@ -22,6 +22,10 @@
     <%= f.select :category_id, @categories_collection, prompt: 'Choose category' %>
   </div>
   <div>
+    <%= f.label :tag_ids, "Tags" %><br>
+    <%= f.collection_check_boxes(:tag_ids, @tags_collection, :id, :name) %>
+  </div>
+  <div>
     <%= f.submit %>
   </div>
 <% end %>
