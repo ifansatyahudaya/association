@@ -41,7 +41,26 @@
   </div>
 <% end %>
 
-<h1>Products User</h1>
+<p>
+  <b>Comments :</b>
+  <% @user.comments.each do |comment| %>
+    <% if comment.persisted? %>  
+      <p><%= comment.body %></p>
+    <% end %>
+  <% end %>
+</p>
+
+<%= form_for [@user, @comment], url: user_comments_path(user_id: @user.id) do |f| %>
+  <div>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<h2>Products User</h2>
 <table border="1">
   <tr>
     <th>Product Name</th>

@@ -19,8 +19,27 @@
 <p>
   <b>Tags: </b>
   <% @product.tags.each do |tag| %>
-    <%= link_to tag.name, tag_products_path(tag) %><br>
+    <%= link_to "#{tag.name}(#{tag.products.count})", tag_products_path(tag) %><br>
   <% end %>
 </p>
+
+<h3>Comment for <%= @product.name %></h3>
+<p>
+  <% @product.comments.each do |comment| %>
+    <% if comment.persisted? %>
+      <b>You: </b><%= comment.body %><br>
+    <% end %>
+  <% end %>
+</p>
+
+<%= form_for [@product, @comment], url: user_product_comments_path(user_id: @product.user.id, product_id: @product.id) do |f| %>
+  <div>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
 
 <%= link_to "Back", user_path(@product.user.id) %>

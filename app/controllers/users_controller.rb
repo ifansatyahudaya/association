@@ -14,7 +14,9 @@ class UsersController < ApplicationController
     end 
   end
 
-  def show; end
+  def show
+    @comment = @user.comments.new
+  end
 
   def edit; end
 

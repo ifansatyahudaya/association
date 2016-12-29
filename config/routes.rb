@@ -23,9 +23,13 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users do
-    resources :products, except: :index
+    resources :products, except: :index do
+      resources :comments, shallow: true, except: :create
+      post 'comments', to: 'comments#create_comment_product'
+    end
     resource :profile, controller: 'profile'
-    resources :comments, shallow: true
+    resources :comments, shallow: true, except: :create
+    post 'comments', to: 'comments#create_user_comment'
   end
 
   resources :categories do
@@ -36,8 +40,8 @@ Rails.application.routes.draw do
     resources :products, only: :index
   end
 
-  resources :products, only: :index do
-    resources :comments, shallow: true
-  end
+  # resources :products, only: :index do
+  #   resources :comments, shallow: true
+  # end
   root to: "welcome#index"
 end
