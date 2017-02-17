@@ -6,3 +6,4 @@ class WelcomeController < ApplicationController
   def show
   end
 end
+# cekson git
