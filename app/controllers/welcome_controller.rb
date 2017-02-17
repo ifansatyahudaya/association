@@ -7,3 +7,5 @@ class WelcomeController < ApplicationController
   end
 end
 # cekson git
+
+# cekson git2
